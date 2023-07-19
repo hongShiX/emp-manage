@@ -1,0 +1,41 @@
+# 端口，数据源，thymeleaf，mybatis，表单转换
+
+
+# 端口号
+server:
+  port: 9981
+
+
+# 数据库配置
+spring:
+  datasource:
+    username: root
+    password: huhang0113
+    url: jdbc:mysql://127.0.0.1:3306/admin?serverTimezone=GMT%2B8
+
+  # 关闭thymeleaf缓存
+  thymeleaf:
+    cache: false
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+    throw-exception-if-no-handler-found: true  # 如果出错则直接抛出异常
+  jackson:
+    # 配置年月日格式和时区
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml # 映射文件的位置  # 别名
+  configuration:
+    map-underscore-to-camel-case: true  # 开启 _ 和 驼峰命名的转换
+  type-aliases-package: cn.hh.*.entity
+
+
+#日志配置
+logging:
+  level:
+    cn.hh: debug
